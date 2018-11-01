@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Provider store={createStore(reducers)}>
         <View>
-          hi
+          <Text>hiiiiiii</Text>
         </View>
       </Provider>
     );
