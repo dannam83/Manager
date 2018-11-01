@@ -3,7 +3,7 @@ import { Card, CardSection, Input, Button } from './common';
 
 class LoginForm extends Component {
   onEmailChange(text) {
-
+    return null
   }
 
   render() {
@@ -13,7 +13,7 @@ class LoginForm extends Component {
           <Input
             label="Email"
             placeholder="user@email.com"
-            onChangeText={this.oneEmailChange.bind(this)}
+            onChangeText={this.onEmailChange.bind(this)}
           />
         </CardSection>
 
