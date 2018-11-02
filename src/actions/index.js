@@ -22,11 +22,17 @@ export const passwordChanged = (password) => {
 export const loginUser = ({ email, password }) => {
   return (dispatch) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(user => {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: user
+    .then(user => loginSuccess(dispatch, user))
+    .catch(() => {
+      firebase.auth.createUserWithEmailAndPassword(email, password)
+      .then(user => loginSuccess(dispatch, user));
       });
-    });
   };
+};
+
+const loginSuccess = (dispatch, user) => {
+  dispatch({
+    type: LOGIN_SUCCESS,
+    payload: user
+  });
 };
