@@ -33,34 +33,36 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Card>
-        <CardSection>
-          <Input
-            label="Email"
-            placeholder="user@email.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-          />
-        </CardSection>
+      <View style={styles.loginViewStyle}>
+        <Card>
+          <CardSection>
+            <Input
+              label="Email"
+              placeholder="user@email.com"
+              onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.email}
+            />
+          </CardSection>
 
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Password"
-            placeholder="password"
-            onChangeText={this.onPasswordChange.bind(this)}
-            value={this.props.password}
-          />
-        </CardSection>
+          <CardSection>
+            <Input
+              secureTextEntry
+              label="Password"
+              placeholder="password"
+              onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password}
+            />
+          </CardSection>
 
-        {this.renderError()}
+          {this.renderError()}
 
-        <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Login
-          </Button>
-        </CardSection>
-      </Card>
+          <CardSection>
+            <Button onPress={this.onButtonPress.bind(this)}>
+              Login
+            </Button>
+          </CardSection>
+        </Card>
+      </View>
     );
   }
 }
@@ -70,6 +72,12 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+ },
+ loginViewStyle: {
+    flex: 1,
+    flexDirection: 'column',
+    // justifyContent: 'center'
+    paddingTop: 250
  }
 };
 
