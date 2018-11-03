@@ -14,9 +14,8 @@ const INITIAL_STATE = {
   loading: false
 };
 
+// console.log(action); insert console.log in export to see all actions
 export default (state = INITIAL_STATE, action) => {
-  console.log(action);
-
   switch (action.type) {
     case EMAIL_CHANGED:
       return { ...state, email: action.payload };
