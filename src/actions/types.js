@@ -3,3 +3,5 @@ export const PASSWORD_CHANGED = 'PASSWORD_CHANGED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGIN = 'LOGIN';
+
+export const EMPLOYEE_UPDATE = 'EMPLOYEE_UPDATE';
