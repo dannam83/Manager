@@ -44,7 +44,7 @@ const loginSuccess = (dispatch, user) => {
     payload: user
   });
 
-  Actions.employeeList();
+  Actions.main();
 };
 
 const loginFail = (dispatch) => {
