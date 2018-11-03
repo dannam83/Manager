@@ -25,7 +25,7 @@ class LoginForm extends Component {
         <Spinner size="large" />
       );
     }
-    
+
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
       Login
@@ -47,7 +47,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <View style={styles.loginViewStyle}>
+      <View>
         <Card>
           <CardSection>
             <Input
@@ -84,12 +84,6 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
- },
- loginViewStyle: {
-    flex: 1,
-    flexDirection: 'column',
-    // justifyContent: 'center'
-    paddingTop: 250
  }
 };
 
