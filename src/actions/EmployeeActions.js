@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import { EMPLOYEE_UPDATE } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -8,10 +9,13 @@ export const employeeUpdate = ({ prop, value }) => {
   };
 };
 
+// put firebase call and promises in a return to satisfy redux thunk
 export const employeeCreate = ({ name, phone, shift }) => {
   const { currentUser } = firebase.auth();
-  console.log(name, phone, shift, currentUser.uid);
 
-  firebase.database().ref(`/users/${currentUser.uid}/employees`)
-    .push({ name, phone, shift });
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees`)
+    .push({ name, phone, shift })
+    .then(() => Actions.pop());
+  };
 };
