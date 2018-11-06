@@ -1,6 +1,10 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { EMPLOYEE_UPDATE, EMPLOYEE_CREATE } from './types';
+import {
+  EMPLOYEE_UPDATE,
+  EMPLOYEE_CREATE,
+  EMPLOYEES_FETCH_SUCCESS
+ } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
   return {
@@ -9,7 +13,6 @@ export const employeeUpdate = ({ prop, value }) => {
   };
 };
 
-// put firebase call and promises in a return to satisfy redux thunk
 export const employeeCreate = ({ name, phone, shift }) => {
   const { currentUser } = firebase.auth();
 
@@ -20,5 +23,16 @@ export const employeeCreate = ({ name, phone, shift }) => {
       dispatch({ type: EMPLOYEE_CREATE });
       Actions.pop();
     });
+  };
+};
+
+export const employeesFetch = () => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees`)
+      .on('value', snapshot => {
+        dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() });
+      });
   };
 };
